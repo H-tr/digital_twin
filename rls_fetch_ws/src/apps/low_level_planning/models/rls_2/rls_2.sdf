@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <model name="rls_2_2">
+    <static>true</static> <!-- Set to true if the chair is not supposed to move -->
+    <link name="link">
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <mass>15</mass>
+        <inertia>
+          <ixx>0.0</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.0</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.1</izz>
+        </inertia>
+      </inertial>
+      <!-- Existing mesh for rls_2 -->
+      <collision name="collision_rls_2">
+        <geometry>
+          <mesh>
+            <uri>model://rls_2/meshes/rls_2.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_rls_2">
+        <geometry>
+          <mesh>
+            <uri>model://rls_2/meshes/rls_2.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <static>true</static>
+  </model>
+</sdf>

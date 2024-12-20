@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<launch>
+    <!-- Set the GAZEBO_MODEL_PATH environment variable -->
+    <env name="GAZEBO_MODEL_PATH" value="$(find low_level_planning)/models"/>
+
+    <!-- Launch the Gazebo simulation for Fetch robot -->
+    <include file="$(find fetch_gazebo)/launch/simulation.launch"/>
+
+    <!-- Load the 'rls' mesh model into Gazebo -->
+    <node name="spawn_rls_model" pkg="gazebo_ros" type="spawn_model" respawn="false"
+          output="screen" args="-file $(find low_level_planning)/models/rls_2/rls_2.sdf -sdf -model rls_model"/>
+    <node name="spawn_wall_model" pkg="gazebo_ros" type="spawn_model" respawn="false"
+          output="screen" args="-file $(find low_level_planning)/models/wall/wall.sdf -sdf -model wall"/>
+    <node name="spawn_table_model" pkg="gazebo_ros" type="spawn_model" respawn="false"
+          output="screen" args="-file $(find low_level_planning)/models/table/table.sdf -sdf -model table"/>
+    <node name="spawn_sofa_model" pkg="gazebo_ros" type="spawn_model" respawn="false"
+          output="screen" args="-file $(find low_level_planning)/models/sofa/sofa.sdf -sdf -model sofa"/>
+    <node name="spawn_open_kitchen_model" pkg="gazebo_ros" type="spawn_model" respawn="false"
+          output="screen" args="-file $(find low_level_planning)/models/open_kitchen/open_kitchen.sdf -sdf -model open_kitchen"/>
+    <node name="spawn_tea_table_model" pkg="gazebo_ros" type="spawn_model" respawn="false"
+          output="screen" args="-file $(find low_level_planning)/models/tea_table/tea_table.sdf -sdf -model tea_table"/>
+    <node name="spawn_workstation_model" pkg="gazebo_ros" type="spawn_model" respawn="false"
+          output="screen" args="-file $(find low_level_planning)/models/workstation/workstation.sdf -sdf -model workstation"/>
+
+    <!-- Launch MoveIt on Fetch -->
+    <include file="$(find fetch_moveit_config)/launch/move_group.launch"/>
+
+    <!-- Launch Fetch navigation service -->
+    <include file="$(find fetch_navigation)/launch/fetch_nav.launch">
+        <arg name="map_file" value="$(find low_level_planning)/maps/icra24.yaml"/>
+        <arg name="move_base_include" default="$(find low_level_planning)/launch/include/move_base.launch.xml"/>
+        <arg name="amcl_include" default="$(find low_level_planning)/launch/include/amcl.launch.xml"/>
+    </include>
+</launch>
