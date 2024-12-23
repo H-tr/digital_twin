@@ -72,6 +72,15 @@ RUN rosdep init && \
 RUN echo "source /opt/ros/noetic/setup.bash" >> /etc/bash.bashrc
 ENV ROS_PACKAGE_PATH=/opt/ros/noetic/share
 
+# Install additional packages for ros
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    ros-noetic-ros-numpy \
+    ros-noetic-moveit \
+    ros-noetic-ros-control \
+    ros-noetic-ros-controllers \
+    ros-noetic-rviz-imu-plugin
+
 # Create non-root user and setup environment.
 RUN useradd -m -d /home/user -g root -G sudo -u ${USER_ID} user
 RUN usermod -aG sudo user
@@ -94,10 +103,12 @@ RUN python3 -m pip install --upgrade pip setuptools
 # Clone Fetch robot repositories and checkout to gazebo11 branch
 RUN mkdir -p ~/catkin_ws/src && \
     cd ~/catkin_ws/src && \
-    git clone https://github.com/fetchrobotics/fetch_ros.git && \
-    git clone https://github.com/fetchrobotics/fetch_gazebo.git && \
+    git clone https://github.com/RobotIL-rls/fetch_ros.git && \
+    git clone https://github.com/RobotIL-rls/fetch_gazebo.git && \
     cd fetch_gazebo && \
-    git checkout gazebo11
+    git checkout gazebo11 && \
+    cd ~/catkin_ws/src && \
+    git clone https://github.com/RobotIL-rls/robot_controllers.git
 
 # Install dependencies and build the workspace
 RUN source /opt/ros/noetic/setup.bash && \

@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-
-"""
-Example script demonstrating how to control Fetch's base movement using keyboard input.
-"""
-
 import sys
 import tty
 import termios
