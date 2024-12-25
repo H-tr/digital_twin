@@ -2,7 +2,7 @@
 <package format="2">
   <name>low_level_planning</name>
   <version>0.0.0</version>
-  <description>The low_level_planning package</description>
+  <description>The digital_twin package</description>
 
   <maintainer email="tianrunhu@gmail.com">tianrun</maintainer>
   <license>BSD</license>
