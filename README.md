@@ -64,6 +64,8 @@ Install the project in development mode:
 ```bash
 cd /workspace
 pip install -e .
+git lfs install
+git lfs pull
 ```
 
 ## Examples
