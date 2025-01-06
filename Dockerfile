@@ -52,6 +52,12 @@ RUN apt-get update && \
     wget && \
     rm -rf /var/lib/apt/lists/*
 
+# Install Git LFS
+RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
+    apt-get update && \
+    apt-get install -y git-lfs && \
+    rm -rf /var/lib/apt/lists/*
+
 RUN add-apt-repository ppa:kisak/kisak-mesa && \
     apt-get update
 
@@ -84,8 +90,10 @@ RUN apt-get update && \
 # Create non-root user and setup environment.
 RUN useradd -m -d /home/user -g root -G sudo -u ${USER_ID} user
 RUN usermod -aG sudo user
+
 # Set user password
 RUN echo "user:user" | chpasswd
+
 # Ensure sudo group users are not asked for a password when using sudo command by amending sudoers file
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
@@ -122,6 +130,9 @@ RUN echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 
 # Change working directory
 WORKDIR /workspace
+
+# Initialize Git LFS for the user
+RUN git lfs install
 
 # Bash as default entrypoint.
 CMD /bin/bash -l

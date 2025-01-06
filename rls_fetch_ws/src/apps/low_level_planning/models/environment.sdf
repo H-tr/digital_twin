@@ -1,0 +1,232 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="environment">
+    <!-- Base Link -->
+    <link name="base_link">
+      <inertial>
+        <mass>1.0</mass>
+        <inertia>
+          <ixx>1.0</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>1.0</iyy>
+          <iyz>0.0</iyz>
+          <izz>1.0</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <!-- RLS Model -->
+    <link name="rls_link">
+      <pose>0 0 0 0 0 0</pose>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://rls_2/meshes/rls_2.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://rls_2/meshes/rls_2.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass>1.0</mass>
+        <inertia>
+          <ixx>0.1</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.1</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.1</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <!-- Wall Model -->
+    <link name="wall_link">
+      <pose>0 0 0 0 0 0</pose>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://wall/meshes/wall.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://wall/meshes/wall.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass>1000.0</mass>
+        <inertia>
+          <ixx>1.0</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>1.0</iyy>
+          <iyz>0.0</iyz>
+          <izz>1.0</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <!-- Table Model -->
+    <link name="table_link">
+      <pose>0 0 0 0 0 0</pose>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://table/meshes/table.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://table/meshes/table.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass>10.0</mass>
+        <inertia>
+          <ixx>0.1</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.1</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.1</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <!-- Sofa Model -->
+    <link name="sofa_link">
+      <pose>0 0 0 0 0 0</pose>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://sofa/meshes/sofa.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://sofa/meshes/sofa.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass>50.0</mass>
+        <inertia>
+          <ixx>0.1</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.1</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.1</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <!-- Open Kitchen Model -->
+    <link name="kitchen_link">
+      <pose>0 0 0 0 0 0</pose>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://open_kitchen/meshes/open_kitchen.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://open_kitchen/meshes/open_kitchen.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass>200.0</mass>
+        <inertia>
+          <ixx>1.0</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>1.0</iyy>
+          <iyz>0.0</iyz>
+          <izz>1.0</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <!-- Tea Table Model -->
+    <link name="tea_table_link">
+      <pose>0 0 0 0 0 0</pose>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://tea_table/meshes/tea_table.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://tea_table/meshes/tea_table.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass>15.0</mass>
+        <inertia>
+          <ixx>0.1</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.1</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.1</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <!-- Workstation Model -->
+    <link name="workstation_link">
+      <pose>0 0 0 0 0 0</pose>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://workstation/meshes/workstation.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://workstation/meshes/workstation.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass>30.0</mass>
+        <inertia>
+          <ixx>0.1</ixx>
+          <ixy>0.0</ixy>
+          <ixz>0.0</ixz>
+          <iyy>0.1</iyy>
+          <iyz>0.0</iyz>
+          <izz>0.1</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <!-- Make the model static -->
+    <static>true</static>
+  </model>
+</sdf>
