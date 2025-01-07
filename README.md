@@ -15,12 +15,14 @@ The project uses Docker containers for development to ensure consistency across 
 ### Setting up the Development Container
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/H-tr/digital_twin
    cd digital-twin
    ```
 
 2. Open VSCode:
+
    ```bash
    code .
    ```
@@ -37,24 +39,29 @@ The project uses Docker containers for development to ensure consistency across 
 Once inside the development container:
 
 1. Navigate to the ROS workspace:
+
    ```bash
    cd rls_fetch_ws
    ```
 
 2. Build the workspace:
+
    ```bash
    catkin_make
    ```
 
 3. Add the workspace to your bash environment:
+
    ```bash
    echo "source /workspace/rls_fetch_ws/devel/setup.bash" >> ~/.bashrc
    ```
 
 4. Apply the changes:
+
    ```bash
    source ~/.bashrc
    ```
+
    Or close and reopen your terminal.
 
 ### Installing the Project
@@ -73,6 +80,7 @@ git lfs pull
 The project includes several examples to help you get started with controlling the robot. These examples can be found in the `examples` folder and demonstrate various control commands and interactions with the robot.
 
 To run an example:
+
 1. Navigate to the examples folder
 2. Follow the instructions in [example's README](examples/README.md)
 3. Try modifying the examples to understand how different commands affect the robot's behavior
@@ -80,6 +88,7 @@ To run an example:
 ## Development
 
 After setting up the environment, you can start developing:
+
 - The development container provides all necessary dependencies
 - Changes made in the container persist on your host machine
 - ROS commands and tools are available in the terminal
