@@ -2,17 +2,30 @@
 
 This is a digital twin of the Robot Living Studio. The project simulates the environment in GAZEBO and includes an integrated Fetch robot. The topics and control commands are identical to those of the real robot, ensuring that code developed in simulation will work seamlessly with the physical robot.
 
-The project uses Docker containers for development to ensure consistency across different development environments.
+## System Requirements
 
-## Prerequisites
+### For Ubuntu Users
+
+If you're running Ubuntu 20.04 natively, we recommend using Docker for development to ensure consistency across different development environments.
+
+#### Prerequisites for Docker Setup
 
 - Docker installed on your system
 - VSCode with [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension installed
 - Git installed on your system
 
+### For Windows/macOS Users
+
+If you're running Windows or macOS, we recommend using either:
+
+- Virtual Machine running Ubuntu 20.04 (recommended for most users)
+- Windows Subsystem for Linux (WSL) with Ubuntu 20.04 (for Windows users)
+
+Please follow the setup instructions in [VM_SETUP.md](VM_SETUP.md) for virtual machine setup.
+
 ## Getting Started
 
-### Setting up the Development Container
+### For Ubuntu Users with Docker
 
 1. Clone the repository:
 
@@ -36,7 +49,7 @@ The project uses Docker containers for development to ensure consistency across 
 
 ### Setting up the ROS Workspace
 
-Once inside the development container:
+Once your development environment is ready (either Docker or VM):
 
 1. Navigate to the ROS workspace:
 
@@ -53,7 +66,7 @@ Once inside the development container:
 3. Add the workspace to your bash environment:
 
    ```bash
-   echo "source /workspace/rls_fetch_ws/devel/setup.bash" >> ~/.bashrc
+   echo "source $(pwd)/devel/setup.bash" >> ~/.bashrc
    ```
 
 4. Apply the changes:
@@ -62,14 +75,12 @@ Once inside the development container:
    source ~/.bashrc
    ```
 
-   Or close and reopen your terminal.
-
 ### Installing the Project
 
 Install the project in development mode:
 
 ```bash
-cd /workspace
+cd /workspace  # Skip this step if you're using VM
 pip install -e .
 git lfs install
 git lfs pull
@@ -89,8 +100,7 @@ To run an example:
 
 After setting up the environment, you can start developing:
 
-- The development container provides all necessary dependencies
-- Changes made in the container persist on your host machine
+- All necessary dependencies are provided in either Docker or VM setup
 - ROS commands and tools are available in the terminal
 - Use the provided examples as a reference for implementing your own robot control logic
 
